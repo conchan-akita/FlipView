@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <title>FlipView</title>
+
+    <!-- 2015.09.01
+        https://msdn.microsoft.com/ja-jp/library/windows/apps/hh465425.aspx
+     -->
+
+    <!-- WinJS 参照 -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <!-- FlipView 参照 -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <!--<script src="js/dataExample.js"></script>-->
+    <script src="/js/default.js"></script>
+
+
+    <script>
+        (function () {
+            "use strict";
+            window.addEventListener("load", function () {
+                // 画像のリストを定義
+                /*var dataArray = [
+                    { type: "item", title: "絶壁", picture: "images/Cliff.jpg" },
+                    { type: "item", title: "葡萄", picture: "images/Grapes.jpg" },
+                    { type: "item", title: "レーニア山", picture: "images/Rainier.jpg" },
+                    { type: "item", title: "夕焼け", picture: "images/Sunset.jpg" },
+                    { type: "item", title: "渓谷", picture: "images/Valley.jpg" }
+                ];*/
+                // 配列をWinJS.Binding.Listオブジェクトに変換
+                //var dataList = new WinJS.Binding.List(dataArray);
+                // FlipViewオブジェクトを取得
+                //var flip_view = document.getElementById("FlipView").winControl;
+                // 画像リストのdataSourceオブジェクトをFlipViewオブジェクトにセット
+                //flip_view.itemDataSource = dataList.dataSource;
+                //ReadData3();
+            }, false);
+        })();
+    </script>
+</head>
+<body>
+    <!--<h1 class="title">フリップ ビュー</h1>-->
+    <div class="content">
+        <span id="msg">msg</span>
+        <span id="msg2">msg2</span>
+        <!-- 項目のテンプレート -->
+        <div id="ItemTemplate" data-win-control="WinJS.Binding.Template">
+            <!-- <figure class="item">
+            
+                <img src="#" data-win-bind="src: picture; alt: title">
+                <figcaption data-win-bind="innerText: title"></figcaption>
+            </figure> -->
+
+            <div>
+                <img id="imgid" src="#" data-win-bind="src: picture; alt: title" style="width:100%; height:100vh;" />
+            </div>
+                
+        </div>
+        <!-- フリップ ビュー -->
+        <!--<div id="FlipView"
+            data-win-control="WinJS.UI.FlipView"
+            data-win-options="{ itemTemplate : select('#ItemTemplate') }">
+        </div>-->
+        <!--
+        <div id="FlipView"
+             data-win-control="WinJS.UI.FlipView"
+             data-win-options="{ itemDataSource : DataExample.itemList.dataSource,itemTemplate : ItemTemplate, currentPage:value}">
+        </div>
+            -->
+        <!-- JSでBind ver. -->
+        
+        <div id="FlipView"
+             data-win-control="WinJS.UI.FlipView">
+        </div>
+        
+    </div>
+
+    <!-- AppBar 20150908 added by conchan -->
+
+    <div id="appBar" data-win-control="WinJS.UI.AppBar" data-win-options="">
+        <button id="createMode"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options=
+                "{label:'作成モード', 
+                icon:'settings', 
+                section:'global',
+                tooltip:'画像の登録や解除をできるようにする',
+                disabled:'true'}">
+        </button>
+        <button id="exeMode"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{label:'本番モード',
+                icon:'people',
+                section:'global',
+                tooltip:'完成したらこのボタンを押してください'}">
+        </button>
+        <button id="register"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                label:'登録', 
+                icon:'add',
+                section:'selection', 
+                tooltip:'このページに画像を登録'}">
+        </button>
+        <button id="delete"
+                data-win-control="WinJS.UI.AppBarCommand"
+                data-win-options="{
+                label:'削除', 
+                icon:'remove', 
+                section:'selection',
+                tooltip:'このページに登録された画像を削除'}">
+        </button>
+
+    </div>
+
+</body>
+</html>

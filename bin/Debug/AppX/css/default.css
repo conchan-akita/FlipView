@@ -1,0 +1,59 @@
+﻿body {
+}
+
+.title {
+    margin-top: 45px;
+    /*margin-left: 120px; */
+}
+
+/*.content {
+    margin-top: 31px;
+    margin-left: 120px;
+    margin-bottom: 50px; 
+}*/
+
+/* 2015.09.02 1:07 added. */
+/*img{
+    max-width: 100vw;
+    height: auto;
+}*/
+
+#FlipView {
+    width: 480px;
+    /*width:1369px;*/
+    height: 270px;
+    /*height:769px;*/
+    /*border: solid 1px #aaaaaa;*/
+}
+figure.item {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+figure.item img {
+    margin:0;
+    width: 480px;
+    height: 270px;
+}
+figure.item figcaption {
+    width: 480px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 120%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
+    position: absolute;
+    bottom: 0px;
+}
+
+@media screen and (-ms-view-state: fullscreen-landscape) {
+}
+
+@media screen and (-ms-view-state: filled) {
+}
+
+@media screen and (-ms-view-state: snapped) {
+}
+
+@media screen and (-ms-view-state: fullscreen-portrait) {
+}

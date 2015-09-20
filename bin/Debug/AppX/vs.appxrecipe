@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>CONCHAN-PC</Machine>
+    <WindowsUser>Sasaki</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows 8.1</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>0163fb79-8576-4abc-adee-92868bd0253b</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>CAB79D6A764408B40DB478B38D845560D99077C61197D8FC7A0CC8BA99E45606</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>0163fb79-8576-4abc-adee-92868bd0253b_1.1.0.0_neutral__7zgbhphrv24hr</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>0163fb79-8576-4abc-adee-92868bd0253b_7zgbhphrv24hr!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>0163fb79-8576-4abc-adee-92868bd0253b</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=太巳</RegisteredPackagePublisher>
+    <RegisteredVersion>1.1.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-19T04:54:22.114</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\default.html">
+      <PackagePath>default.html</PackagePath>
+      <Modified>2015-09-18T15:04:40.624</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Cliff.jpg">
+      <PackagePath>images\Cliff.jpg</PackagePath>
+      <Modified>2015-09-01T07:04:28.306</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Grapes.jpg">
+      <PackagePath>images\Grapes.jpg</PackagePath>
+      <Modified>2015-09-01T07:04:28.353</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Rainier.jpg">
+      <PackagePath>images\Rainier.jpg</PackagePath>
+      <Modified>2015-09-01T07:04:28.400</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Sunset.jpg">
+      <PackagePath>images\Sunset.jpg</PackagePath>
+      <Modified>2015-09-01T07:04:28.509</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Valley.jpg">
+      <PackagePath>images\Valley.jpg</PackagePath>
+      <Modified>2015-09-01T07:04:28.556</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\test.JPG">
+      <PackagePath>images\test.JPG</PackagePath>
+      <Modified>2015-02-10T08:29:25.811</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\logo.png">
+      <PackagePath>images\logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-01T07:04:28.369</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\smalllogo.png">
+      <PackagePath>images\smalllogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-01T07:04:28.431</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\splashscreen.png">
+      <PackagePath>images\splashscreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-01T07:04:28.447</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\storelogo.png">
+      <PackagePath>images\storelogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-01T07:04:28.478</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\js\dataExample.js">
+      <PackagePath>js\dataExample.js</PackagePath>
+      <Modified>2015-09-18T14:48:17.435</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\js\default.js">
+      <PackagePath>js\default.js</PackagePath>
+      <Modified>2015-09-19T14:49:09.083</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\css\default.css">
+      <PackagePath>css\default.css</PackagePath>
+      <Modified>2015-09-02T08:30:18.977</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bin\Debug\ReverseMap\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2015-09-14T05:56:12.162</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.WinJS.2.0\1.0\">
+      <Name>Microsoft.WinJS.2.0</Name>
+      <Version>1.0.9600.17018</Version>
+      <Architecture>Neutral</Architecture>
+      <FrameworkIdentity>Name=Microsoft.WinJS.2.0, MinVersion=1.0.9600.17018</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.WinJS.2.0\1.0\Microsoft.WinJS.2.0.appx</AppxLocation>
+      <MoreInfo>http://go.microsoft.com/fwlink/%3fLinkId=260891</MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

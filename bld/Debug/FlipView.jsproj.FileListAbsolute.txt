@@ -1,0 +1,54 @@
+C:\Users\太巳\Desktop\FlipView\FlipView\bin\Debug\resources.pri
+C:\Users\太巳\Desktop\FlipView\FlipView\bin\Debug\AppxManifest.xml
+C:\Users\太巳\Desktop\FlipView\FlipView\bin\Debug\FlipView.build.appxrecipe
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\priconfig.xml.intermediate
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\layout.resfiles.intermediate
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\resources.resfiles.intermediate
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\pri.resfiles.intermediate
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\priconfig.xml
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\layout.resfiles
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\resources.resfiles
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\pri.resfiles
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\LanguageQualifiers.txt
+C:\Users\太巳\Desktop\FlipView\FlipView\bld\Debug\ProjectArchitectures.txt
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bin\Debug\resources.pri
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bin\Debug\AppxManifest.xml
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bin\Debug\FlipView.build.appxrecipe
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\priconfig.xml.intermediate
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\layout.resfiles.intermediate
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\resources.resfiles.intermediate
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\pri.resfiles.intermediate
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\priconfig.xml
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\layout.resfiles
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\resources.resfiles
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\pri.resfiles
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\LanguageQualifiers.txt
+C:\Users\太巳\Desktop\Samples\04\FlipView\FlipView\bld\Debug\ProjectArchitectures.txt
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bin\Debug\resources.pri
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bin\Debug\AppxManifest.xml
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bin\Debug\FlipView.build.appxrecipe
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\priconfig.xml.intermediate
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\layout.resfiles.intermediate
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\resources.resfiles.intermediate
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\pri.resfiles.intermediate
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\priconfig.xml
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\layout.resfiles
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\resources.resfiles
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\pri.resfiles
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\LanguageQualifiers.txt
+C:\Users\太巳\Desktop\Samples\05\FlipView\FlipView\bld\Debug\ProjectArchitectures.txt
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bin\Debug\ReverseMap\resources.pri
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bin\Debug\AppxManifest.xml
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bin\Debug\FlipView.build.appxrecipe
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\priconfig.xml
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\priconfig.xml.intermediate
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\layout.resfiles
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\layout.resfiles.intermediate
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\resources.resfiles
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\resources.resfiles.intermediate
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\pri.resfiles
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\pri.resfiles.intermediate
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\qualifiers.txt
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\qualifiers.txt.intermediate
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bld\Debug\ProjectArchitectures.txt
