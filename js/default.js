@@ -132,6 +132,16 @@ function Test(e) {
     //var cur = new WinJS.UI.FlipView(flipView).currentPage;
     var cur2 = flipView.winControl.currentPage;
     document.getElementById("msg2").textContent = cur2;
+
+    var dataArray = flipView.winControl.itemDataSource;
+    dataArray.list.splice(cur2, 1);
+
+    var textFile = "data4_" + cur2 + ".txt";
+
+    // textFileが存在するなら、次回起動時に読み込まないようにするため、削除する.
+
+
+
     ;
 }
 
@@ -144,7 +154,6 @@ function CreateMode(e) {
 
     var app_bar = document.getElementById("appBar").winControl;
     app_bar.hide();
-
 }
 
 // 本番モードボタンが押されたら呼ばれる
@@ -179,6 +188,7 @@ function Register2(e) {
 
     //var folder;
     //var mode;
+    var flipView = document.getElementById("FlipView");
     var write_data = "";
     var fileName = "";
 
@@ -186,10 +196,13 @@ function Register2(e) {
         function (file) {
             if (file) {
 
+                currentPage = flipView.winControl.currentPage;
+
                 // 追加のオブジェクトを生成
-                newObject = { type: 'item', title: '2', picture: 'no_picture' };
+                newObject = { type: 'item', title: '-1', picture: 'no_picture' };
                 // オブジェクトに追加写真のURIを設定
                 newObject["picture"] = URL.createObjectURL(file, { oneTimeOnly: true });
+                newObject["title"] = currentPage;
 
                 document.getElementById("msg").textContent = newObject["picture"];
                 //DataExample.itemList.push("type: 'item', title: 'nothing', picture:" + file.path);
@@ -198,6 +211,7 @@ function Register2(e) {
                 // http://hakuhin.jp/js/data_uri_scheme.html#DATA_URI_SCHEME_02
                 file_reader = new FileReader();
                 file_reader.readAsDataURL(file);
+                // TODO : write_dataが確実に格納されてからfileに書き込む方法はあるか？
                 file_reader.onload = function (e) {
                     document.getElementById("msg").textContent = file_reader.result;
                     write_data = file_reader.result;
@@ -205,7 +219,6 @@ function Register2(e) {
 
                 // 表示中画像を特定し、その画像の後ろに新画像追加し、表示中画像削除
                 flipView = document.getElementById("FlipView");
-                currentPage = flipView.winControl.currentPage;
 
                 flipView.winControl.itemDataSource.beginEdits();
                 return flipView.winControl.itemDataSource.change(currentPage, newObject);
@@ -216,7 +229,7 @@ function Register2(e) {
                 return new WinJS.Promise.wrapError();
             }
         }, function (err) {
-            //return;
+            return new WinJS.Promise.wrapError();
         }).then(
             function () {
                 //change success
@@ -250,13 +263,6 @@ function Register2(e) {
             }
         );
 
-}
-
-function ChangePage(e) {
-    var cur = new WinJS.UI.FlipView(flipView).currentPage;
-    document.getElementById("msg2").textContent = cur;
-
-    //document.querySelector("#msg2").textContent = e.translationX;
 }
 
 function loopAsync(initVal, fun) {
