@@ -139,7 +139,21 @@ function Test(e) {
     var textFile = "data4_" + cur2 + ".txt";
 
     // textFileが存在するなら、次回起動時に読み込まないようにするため、削除する.
+    var folder = Windows.Storage.ApplicationData.current.localFolder;
+    folder.getFileAsync(textFile).then(function (file) {
+        if (file) {
+            // success
+            return file.deleteAsync();
+        } else {
+            return;
+            //return new WinJS.Promise.wrapError();
+        }
+    }, function (e) {
+        // error
+        return;
+        //return new WinJS.Promise.wrapError();
 
+    });
 
 
     ;
@@ -212,6 +226,7 @@ function Register2(e) {
                 file_reader = new FileReader();
                 file_reader.readAsDataURL(file);
                 // TODO : write_dataが確実に格納されてからfileに書き込む方法はあるか？
+                // WinJS.Promise(// write).then
                 file_reader.onload = function (e) {
                     document.getElementById("msg").textContent = file_reader.result;
                     write_data = file_reader.result;

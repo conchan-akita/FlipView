@@ -22,7 +22,7 @@
     <AppXManifest Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-21T07:32:30.059</Modified>
+      <Modified>2015-09-22T09:38:18.112</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -80,7 +80,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\js\default.js">
       <PackagePath>js\default.js</PackagePath>
-      <Modified>2015-09-21T10:26:48.650</Modified>
+      <Modified>2015-09-22T14:10:50.809</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\css\default.css">
       <PackagePath>css\default.css</PackagePath>
