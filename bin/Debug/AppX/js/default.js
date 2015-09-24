@@ -1,5 +1,8 @@
 ﻿// 空白のテンプレートの概要については、次のドキュメントを参照してください:
 // http://go.microsoft.com/fwlink/?LinkId=232509
+
+var nowDataArray = null;
+
 (function () {
     "use strict";
 
@@ -23,13 +26,16 @@
   
     // 画像のリストを定義
     var dataArray = [
-        { type: "item", title: "絶壁", picture: "images/Cliff.jpg" },
-        { type: "item", title: "葡萄", picture: "images/Grapes.jpg" },
+        { type: "item", title: "default_絶壁", picture: "images/default_Cliff.jpg" },
+        { type: "item", title: "default_葡萄", picture: "images/default_Grapes.jpg" },
         { type: "item", title: "恵比寿", picture: "images/test.jpg" },
-        { type: "item", title: "レーニア山", picture: "images/Rainier.jpg" },
-        { type: "item", title: "夕焼け", picture: "images/Sunset.jpg" },
-        { type: "item", title: "渓谷", picture: "images/Valley.jpg" }
+        { type: "item", title: "default_レーニア山", picture: "images/default_Rainier.jpg" },
+        { type: "item", title: "default_夕焼け", picture: "images/default_Sunset.jpg" },
+        { type: "item", title: "default_渓谷", picture: "images/default_Valley.jpg" }
     ];
+    // dataArrayが更新されると勝手にnowDataArrayも更新されているっぽい.
+    // 参照渡しなのか？
+    nowDataArray = dataArray;
 
 
     document.addEventListener("DOMContentLoaded", function (a) {
@@ -63,6 +69,9 @@
                     // このへんでcontroller.countを取ると、変数tmpと違う値になっている.
                     //dataArray.splice(controller.count - 1, 1, newObject);
                     dataArray.splice(tmp, 1, newObject);
+
+                    // 本番モードを使用可能にする
+                    document.getElementById("exeMode").disabled = false;
 
                     //dataArray.push(newObject);
                 }
@@ -102,7 +111,11 @@
                 document.getElementById("createMode").addEventListener("click", CreateMode, false);
                 document.getElementById("exeMode").addEventListener("click", ExeMode, false);
                 document.getElementById("register").addEventListener("click", Register2, false);
-                document.getElementById("delete").addEventListener("click", Test, false);
+                document.getElementById("delete").addEventListener("click", Delete, false);
+
+                // appbar event
+                document.getElementById("appBar").addEventListener("beforeshow", BeforeAppBarShow, false);
+
 
                 console.log("onactivated end");
 
@@ -127,7 +140,27 @@
     app.start();
 })();
 
-function Test(e) {
+function BeforeAppBarShow(e) {
+    var flipView = document.getElementById("FlipView").winControl;
+    var app_bar = document.getElementById("appBar").winControl;
+    var currentPage = flipView.currentPage;
+
+    // 現在表示画像の取得
+    
+    // デフォルト画像なら削除ボタン隠す
+    var nowImageObj = flipView.itemDataSource.list.getAt(currentPage);
+    var nowImageTitle = nowImageObj["title"];
+    document.getElementById("msg2").textContent = nowImageTitle;
+    if (String(nowImageTitle).indexOf("default") != -1) {
+        // hide
+        document.getElementById("delete").disabled = true;
+    } else {
+        // 以下文は必須。先にtrueしていると全画像でhideされたまま。
+        document.getElementById("delete").disabled = false;
+    }
+}
+
+function Delete(e) {
     var flipView = document.getElementById("FlipView");
     //var cur = new WinJS.UI.FlipView(flipView).currentPage;
     var cur2 = flipView.winControl.currentPage;
@@ -137,6 +170,9 @@ function Test(e) {
     dataArray.list.splice(cur2, 1);
 
     var textFile = "data4_" + cur2 + ".txt";
+
+    // TODO : textFileを削除しますか？ウィンドウ
+
 
     // textFileが存在するなら、次回起動時に読み込まないようにするため、削除する.
     var folder = Windows.Storage.ApplicationData.current.localFolder;
@@ -152,11 +188,7 @@ function Test(e) {
         // error
         return;
         //return new WinJS.Promise.wrapError();
-
     });
-
-
-    ;
 }
 
 // 作成モードボタンが押されたら呼ばれる
@@ -165,6 +197,13 @@ function CreateMode(e) {
     document.getElementById("createMode").disabled = true;
     // 代わりに、本番モードボタンを有効
     document.getElementById("exeMode").disabled = false;
+
+    // 本番モードからの復帰
+    var flipView = document.getElementById("FlipView").winControl;
+    //flipView.itemDataSource.beginEdits();
+    //flipView.itemDataSource = nowDataArray;
+    flipView.itemDataSource = new WinJS.Binding.List(nowDataArray).dataSource;
+    //flipView.itemDataSource.endEdits();
 
     var app_bar = document.getElementById("appBar").winControl;
     app_bar.hide();
@@ -177,8 +216,50 @@ function ExeMode(e) {
     // 代わりに、作成モードボタンを有効
     document.getElementById("createMode").disabled = false;
 
-    var app_bar = document.getElementById("appBar").winControl;
-    app_bar.hide();
+    // default image delete
+    var flipView = document.getElementById("FlipView").winControl;
+    var dataArray = flipView.itemDataSource;
+    var dataArrayLength_beforeLoop = dataArray.list.length;
+    //nowDataArray = dataArray.list;
+    var deleteImageNum = 0;
+    var loopPromise = loopAsync(0, function (controller) {
+        //dataArray = controller.prevStepValue;
+        var nowCount = controller.count;
+        console.log("nowCount = " + nowCount);
+
+        /* 後ろからループ開始してdefault image じゃなくなるまで
+        if (String(nowImageTitle).indexOf("default") == -1) {
+            controller.stopLoop();
+        }*/
+        if (nowCount >= dataArrayLength_beforeLoop) {
+            controller.stopLoop();
+        } else {
+            // getAtの引数はnowCountにすると、画像削除後次にチェックする画像を飛ばしてしまう
+            var nowImageObj = flipView.itemDataSource.list.getAt(nowCount-deleteImageNum);
+            var nowImageTitle = nowImageObj["title"];
+            if (String(nowImageTitle).indexOf("default") == -1) {
+                // NOT default image
+                return;
+            } else {
+                // default imageなので削除
+                dataArray.list.splice(nowCount - deleteImageNum, 1);
+                deleteImageNum++;
+                return;
+            }
+        }
+
+    });
+
+    loopPromise.done(function () {
+        var app_bar = document.getElementById("appBar").winControl;
+        app_bar.hide();
+
+    }, function (err) {
+
+    });
+
+    //var app_bar = document.getElementById("appBar").winControl;
+    //app_bar.hide();
 }
 
 function Register2(e) {
@@ -216,20 +297,27 @@ function Register2(e) {
                 newObject = { type: 'item', title: '-1', picture: 'no_picture' };
                 // オブジェクトに追加写真のURIを設定
                 newObject["picture"] = URL.createObjectURL(file, { oneTimeOnly: true });
+                // TODO : 削除時ファイル名出したいので.
+                //newObject["title"] = file.name;
+                // for develop
                 newObject["title"] = currentPage;
+
 
                 document.getElementById("msg").textContent = newObject["picture"];
                 //DataExample.itemList.push("type: 'item', title: 'nothing', picture:" + file.path);
                 filePath = file.path;
 
                 // http://hakuhin.jp/js/data_uri_scheme.html#DATA_URI_SCHEME_02
+                // 1. 下文を外に
                 file_reader = new FileReader();
                 file_reader.readAsDataURL(file);
                 // TODO : write_dataが確実に格納されてからfileに書き込む方法はあるか？
                 // WinJS.Promise(// write).then
+                // 2. onload{}を外に
                 file_reader.onload = function (e) {
                     document.getElementById("msg").textContent = file_reader.result;
                     write_data = file_reader.result;
+                    // 3. return ~.change()以下をここに。
                 }
 
                 // 表示中画像を特定し、その画像の後ろに新画像追加し、表示中画像削除
@@ -250,6 +338,13 @@ function Register2(e) {
                 //change success
                 flipView.winControl.itemDataSource.endEdits();
                 document.getElementById("msg2").textContent = "change success!";
+
+                // 本番モードを使えるようにする
+                document.getElementById("exeMode").disabled = false;
+
+                // 本番モードから作成モードに復帰時用
+                //nowDataArray = flipView.winControl.itemDataSource.list;
+                nowDataArray.splice(currentPage, 1, newObject);
 
                 // write
                 var folder = Windows.Storage.ApplicationData.current.localFolder;

@@ -22,32 +22,32 @@
     <AppXManifest Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-22T09:38:18.112</Modified>
+      <Modified>2015-09-23T06:38:33.615</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\default.html">
       <PackagePath>default.html</PackagePath>
-      <Modified>2015-09-18T15:04:40.624</Modified>
+      <Modified>2015-09-23T16:40:56.292</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Cliff.jpg">
-      <PackagePath>images\Cliff.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Cliff.jpg">
+      <PackagePath>images\default_Cliff.jpg</PackagePath>
       <Modified>2015-09-01T07:04:28.306</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Grapes.jpg">
-      <PackagePath>images\Grapes.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Grapes.jpg">
+      <PackagePath>images\default_Grapes.jpg</PackagePath>
       <Modified>2015-09-01T07:04:28.353</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Rainier.jpg">
-      <PackagePath>images\Rainier.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Rainier.jpg">
+      <PackagePath>images\default_Rainier.jpg</PackagePath>
       <Modified>2015-09-01T07:04:28.400</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Sunset.jpg">
-      <PackagePath>images\Sunset.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Sunset.jpg">
+      <PackagePath>images\default_Sunset.jpg</PackagePath>
       <Modified>2015-09-01T07:04:28.509</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Valley.jpg">
-      <PackagePath>images\Valley.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Valley.jpg">
+      <PackagePath>images\default_Valley.jpg</PackagePath>
       <Modified>2015-09-01T07:04:28.556</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\test.JPG">
@@ -80,7 +80,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\js\default.js">
       <PackagePath>js\default.js</PackagePath>
-      <Modified>2015-09-22T14:10:50.809</Modified>
+      <Modified>2015-09-24T06:48:31.055</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\css\default.css">
       <PackagePath>css\default.css</PackagePath>
@@ -88,7 +88,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bin\Debug\ReverseMap\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2015-09-14T05:56:12.162</Modified>
+      <Modified>2015-09-23T06:38:32.678</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

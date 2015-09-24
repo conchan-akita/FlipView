@@ -21,20 +21,20 @@
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\default.html">
       <PackagePath>default.html</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Cliff.jpg">
-      <PackagePath>images\Cliff.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Cliff.jpg">
+      <PackagePath>images\default_Cliff.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Grapes.jpg">
-      <PackagePath>images\Grapes.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Grapes.jpg">
+      <PackagePath>images\default_Grapes.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Rainier.jpg">
-      <PackagePath>images\Rainier.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Rainier.jpg">
+      <PackagePath>images\default_Rainier.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Sunset.jpg">
-      <PackagePath>images\Sunset.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Sunset.jpg">
+      <PackagePath>images\default_Sunset.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\Valley.jpg">
-      <PackagePath>images\Valley.jpg</PackagePath>
+    <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Valley.jpg">
+      <PackagePath>images\default_Valley.jpg</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\test.JPG">
       <PackagePath>images\test.JPG</PackagePath>
