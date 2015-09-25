@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-23T06:38:33.615</Modified>
+      <Modified>2015-09-25T07:05:48.494</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\default.html">
       <PackagePath>default.html</PackagePath>
-      <Modified>2015-09-23T16:40:56.292</Modified>
+      <Modified>2015-09-25T12:14:34.473</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\images\default_Cliff.jpg">
       <PackagePath>images\default_Cliff.jpg</PackagePath>
@@ -80,7 +80,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\js\default.js">
       <PackagePath>js\default.js</PackagePath>
-      <Modified>2015-09-24T06:48:31.055</Modified>
+      <Modified>2015-09-25T12:26:48.673</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\css\default.css">
       <PackagePath>css\default.css</PackagePath>
