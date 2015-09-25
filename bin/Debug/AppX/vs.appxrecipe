@@ -80,7 +80,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\js\default.js">
       <PackagePath>js\default.js</PackagePath>
-      <Modified>2015-09-25T12:26:48.673</Modified>
+      <Modified>2015-09-25T15:51:46.103</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Sasaki\Documents\Visual Studio 2015\Projects\Samples\Samples\05\FlipView\FlipView\css\default.css">
       <PackagePath>css\default.css</PackagePath>

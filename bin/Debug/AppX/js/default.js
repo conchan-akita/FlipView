@@ -341,10 +341,14 @@ function Register3(e) {
             // for develop
             newObject["title"] = currentPage;
 
+            // image change
+            flipView.winControl.itemDataSource.list.setAt(currentPage, newObject);
+
             var promises = [];
             promises.push(OnLoad(file));    // return write_data
             // return file(書き込むテキストファイル)
-            promises.push(ChangeImage_and_CreateFile2(currentPage, newObject));
+            //promises.push(ChangeImage_and_CreateFile2(currentPage, newObject));
+            promises.push(CreateFileAsync(currentPage));
             return WinJS.Promise.join(promises);
         } else {
             // file pick miss
@@ -379,6 +383,61 @@ function OnLoad(file) {
             document.getElementById("msg").textContent = file_reader.result;
             comp(file_reader.result);
         }
+    });
+}
+
+function CreateFileAsync(currentPage) {
+    // return new WinJS.Pro ... のnewがないとfileが返されないっぽい。new必須。
+    return new WinJS.Promise(function (Comp, Err) {
+        // 本番モードを使えるようにする
+        document.getElementById("exeMode").disabled = false;
+
+        // 本番モードから作成モードに復帰時用
+        //nowDataArray = flipView.winControl.itemDataSource.list;
+        //// nowDataArray.splice(currentPage, 1, newObject);
+
+        // 画像データを書き込むテキストファイルを準備
+        var folder = Windows.Storage.ApplicationData.current.localFolder;
+        var mode = Windows.Storage.CreationCollisionOption.replaceExisting;
+        var fileName = "data4_" + currentPage + ".txt";
+
+        folder.createFileAsync(fileName, mode).then(
+            function (file) {
+                // create file success!!
+                Comp(file);
+            },
+            function (err) {
+                // create file miss
+                Err(err);
+            }
+        );
+    });
+}
+
+//Comp(),Err()が呼びだせない！これはだめ！
+// 原因わかった、Promiseオブジェクトを返す最初の関数はreturnできない。
+// つまりfolder.createFileAsync()はreturnで書けない。
+function CreateFile3(currentPage) {
+    var flipView = document.getElementById("FlipView");
+
+    return new WinJS.Promise(function (Comp, Err) {
+        // 本番モードを使えるようにする
+        document.getElementById("exeMode").disabled = false;
+
+        // 本番モードから作成モードに復帰時用
+        //nowDataArray = flipView.winControl.itemDataSource.list;
+        //// nowDataArray.splice(currentPage, 1, newObject);
+
+        // 画像データを書き込むテキストファイルを準備
+        var folder = Windows.Storage.ApplicationData.current.localFolder;
+        var mode = Windows.Storage.CreationCollisionOption.replaceExisting;
+        var fileName = "data4_" + currentPage + ".txt";
+
+        return folder.createFileAsync(fileName, mode);
+    }).then(function (file) {
+        Comp(file);
+    }, function (err) {
+        Err(err);
     });
 }
 
