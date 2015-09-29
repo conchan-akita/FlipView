@@ -2,7 +2,6 @@
 // http://go.microsoft.com/fwlink/?LinkId=232509
 
 var nowDataArray = null;
-var changeNum = 0;
 
 (function () {
     "use strict";
@@ -11,19 +10,8 @@ var changeNum = 0;
 
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
-    var displayInfo = Windows.Graphics.Display.DisplayInformation.getForCurrentView();
-    var rawDpiX = displayInfo.rawDpiX;
-    var rawDpiY = displayInfo.rawDpiY;
-    var pixels = displayInfo.resolutionScale;
     var wi = window.screen.width;
     var he = window.screen.height;
-    var app_bar = document.getElementById("appBar");
-    var CREATEMODE = 0;
-    var EXEMODE = 1;
-    var nowMode = CREATEMODE;
-    var flipView = document.getElementById("FlipView");
-    //var currentPage = flipView.winControl.currentPage;
-    var container = Windows.Storage.ApplicationData.current.localSettings;
   
     // 画像のリストを定義
     var dataArray = [
@@ -44,46 +32,42 @@ var changeNum = 0;
 
         WinJS.UI.processAll();
 
-        // new 0919 23:20
         var folder = Windows.Storage.ApplicationData.current.localFolder;
         var textFileName = "";
         var msg = document.getElementById("msg").textContent;
         var loopPromise = loopAsync(0, function (controller) {
-            //dataArray = controller.prevStepValue;
             if (controller.count >= 9) {
                 controller.stopLoop();
             }
-            var tmp = controller.count;
-            textFileName = "data4_" + tmp + ".txt";
+            var nowLoopCount = controller.count;
+            textFileName = "data4_" + nowLoopCount + ".txt";
             console.log("now for = " + textFileName);
-            folder.getFileAsync(textFileName).then(function (file) {
-                // success
-                return Windows.Storage.FileIO.readTextAsync(file);
-            }, function (err) {
-                // error
-                return null;
-            }).then(function (data) {
-                // success
-                if (data != null) {
-                    var newObject = { type: 'item', title: tmp, picture: data };
-                    //dataArray.push(newObject);
-                    // このへんでcontroller.countを取ると、変数tmpと違う値になっている.
-                    //dataArray.splice(controller.count - 1, 1, newObject);
-                    dataArray.splice(tmp, 1, newObject);
-
-                    // 本番モードを使用可能にする
-                    document.getElementById("exeMode").disabled = false;
-
-                    //dataArray.push(newObject);
+            folder.getFileAsync(textFileName).then(
+                function (file) {
+                    // success
+                    return Windows.Storage.FileIO.readTextAsync(file);
+                },
+                function (err) {
+                    // error
+                    return new WinJS.Promise.wrapError(err);
                 }
-                //return dataArray;
-                return;
-            }, function (err) {
-                // error
-                //return dataArray;
-                return;
-            });
+            ).then(
+                function (data) {
+                    // success
+                    if (data != null) {
+                        var newObject = { type: 'item', title: nowLoopCount, picture: data };
+                        dataArray.splice(nowLoopCount, 1, newObject);
 
+                        // 本番モードを使用可能にする
+                        document.getElementById("exeMode").disabled = false;
+                    }
+                    return;
+                },
+                function (err) {
+                    // error
+                    return;
+                }
+            );
         });
         loopPromise.done(function () {
             var itemTemp = document.getElementById("ItemTemplate");
@@ -104,7 +88,6 @@ var changeNum = 0;
 
                 console.log("onactivated start");
 
-                //document.querySelector("#msg").textContent = wi + " , " + he;//pixels;//rawDpiX + " , " + rawDpiY;
                 document.querySelector("#FlipView").style.width = wi + "px";
                 document.querySelector("#FlipView").style.height = he + "px";
 
@@ -113,7 +96,7 @@ var changeNum = 0;
                 document.getElementById("exeMode").addEventListener("click", ExeMode, false);
                 document.getElementById("register").addEventListener("click", Register3, false);
                 document.getElementById("delete").addEventListener("click", Delete, false);
-                document.getElementById("testbutton").addEventListener("click", SetAtTest, false);
+                //document.getElementById("testbutton").addEventListener("click", SetAtTest, false);
 
                 // appbar event
                 document.getElementById("appBar").addEventListener("beforeshow", BeforeAppBarShow, false);
@@ -146,15 +129,13 @@ function BeforeAppBarShow(e) {
     var flipView = document.getElementById("FlipView").winControl;
     var app_bar = document.getElementById("appBar").winControl;
     var currentPage = flipView.currentPage;
-
-    // 現在表示画像の取得
     
-    // デフォルト画像なら削除ボタン隠す
+    // appBar呼び出し時の表示画像がデフォルト画像なら削除ボタン隠す
     var nowImageObj = flipView.itemDataSource.list.getAt(currentPage);
     var nowImageTitle = nowImageObj["title"];
     document.getElementById("msg2").textContent = nowImageTitle;
     if (String(nowImageTitle).indexOf("default") != -1) {
-        // hide
+        // 画像タイトルにdefaultが含まれている ... 隠す。
         document.getElementById("delete").disabled = true;
     } else {
         // 以下文は必須。先にtrueしていると全画像でhideされたまま。
@@ -164,18 +145,16 @@ function BeforeAppBarShow(e) {
 
 function Delete(e) {
     var flipView = document.getElementById("FlipView");
-    //var cur = new WinJS.UI.FlipView(flipView).currentPage;
-    var cur2 = flipView.winControl.currentPage;
-    document.getElementById("msg2").textContent = cur2;
-
+    var currentPage = flipView.winControl.currentPage;
     var dataArray = flipView.winControl.itemDataSource;
-    dataArray.list.splice(cur2, 1);
 
-    var textFile = "data4_" + cur2 + ".txt";
+    // 画像をflipViewから外す
+    dataArray.list.splice(currentPage, 1);
+
+    var textFile = "data4_" + currentPage + ".txt";
 
     // TODO : textFileを削除しますか？ウィンドウ
-
-
+    
     // textFileが存在するなら、次回起動時に読み込まないようにするため、削除する.
     var folder = Windows.Storage.ApplicationData.current.localFolder;
     folder.getFileAsync(textFile).then(function (file) {
@@ -203,10 +182,7 @@ function CreateMode(e) {
 
     // 本番モードからの復帰
     var flipView = document.getElementById("FlipView").winControl;
-    //flipView.itemDataSource.beginEdits();
-    //flipView.itemDataSource = nowDataArray;
     flipView.itemDataSource = new WinJS.Binding.List(nowDataArray).dataSource;
-    //flipView.itemDataSource.endEdits();
 
     var app_bar = document.getElementById("appBar").winControl;
     app_bar.hide();
@@ -226,7 +202,6 @@ function ExeMode(e) {
     //nowDataArray = dataArray.list;
     var deleteImageNum = 0;
     var loopPromise = loopAsync(0, function (controller) {
-        //dataArray = controller.prevStepValue;
         var nowCount = controller.count;
         console.log("nowCount = " + nowCount);
 
@@ -256,52 +231,12 @@ function ExeMode(e) {
     loopPromise.done(function () {
         var app_bar = document.getElementById("appBar").winControl;
         app_bar.hide();
-
     }, function (err) {
 
     });
 
     //var app_bar = document.getElementById("appBar").winControl;
     //app_bar.hide();
-}
-
-function SetAtTest() {
-    // ファイルピッカーを開く
-    var view = Windows.UI.ViewManagement.ApplicationView.value;
-    if (view === Windows.UI.ViewManagement.ApplicationViewState.snapped &&
-        !Windows.UI.ViewManagement.ApplicationView.tryUnsnap()) {
-        // TODO : tryUnsnap ha hisuishou
-        return;
-    }
-    // FileOpenPickerオブジェクトを生成
-    var picker = new Windows.Storage.Pickers.FileOpenPicker();
-    // 表示モード
-    picker.viewMode = Windows.Storage.Pickers.PickerViewMode.thumbnail;
-    // 開くフォルダーの指定
-    picker.suggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.picturesLibrary;
-    // 表示ファイルをフィルター
-    picker.fileTypeFilter.replaceAll([".png", ".jpg", ".jpeg"]);
-    // 「開く」ボタンの表記を変更
-    picker.commitButtonText = "決定";
-
-    var flipView = document.getElementById("FlipView");
-    
-    var tt = picker.pickSingleFileAsync().then(function (file) {
-        if (file) {
-            currentPage = flipView.winControl.currentPage;
-
-            // 追加のオブジェクトを生成
-            newObject = { type: 'item', title: '-1', picture: 'no_picture' };
-            // オブジェクトに追加写真のURIを設定
-            newObject["picture"] = URL.createObjectURL(file, { oneTimeOnly: true });
-            // TODO : 削除時ファイル名出したいので.
-            //newObject["title"] = file.name;
-            // for develop
-            newObject["title"] = currentPage;
-
-            flipView.winControl.itemDataSource.list.setAt(currentPage, newObject);
-        }
-    });
 }
 
 function Register3(e) {
@@ -358,7 +293,6 @@ function Register3(e) {
     }, function (err) {
         return new WinJS.Promise.wrapError(err);
     }).then(function (args) {
-        // TODO : args[1]にfileNameが入っていないっぽい.
         return Windows.Storage.FileIO.writeTextAsync(args[1], args[0]);
     }, function (err) {
         // join miss
@@ -412,228 +346,6 @@ function CreateFileAsync(currentPage) {
             }
         );
     });
-}
-
-//Comp(),Err()が呼びだせない！これはだめ！
-// 原因わかった、Promiseオブジェクトを返す最初の関数はreturnできない。
-// つまりfolder.createFileAsync()はreturnで書けない。
-function CreateFile3(currentPage) {
-    var flipView = document.getElementById("FlipView");
-
-    return new WinJS.Promise(function (Comp, Err) {
-        // 本番モードを使えるようにする
-        document.getElementById("exeMode").disabled = false;
-
-        // 本番モードから作成モードに復帰時用
-        //nowDataArray = flipView.winControl.itemDataSource.list;
-        //// nowDataArray.splice(currentPage, 1, newObject);
-
-        // 画像データを書き込むテキストファイルを準備
-        var folder = Windows.Storage.ApplicationData.current.localFolder;
-        var mode = Windows.Storage.CreationCollisionOption.replaceExisting;
-        var fileName = "data4_" + currentPage + ".txt";
-
-        return folder.createFileAsync(fileName, mode);
-    }).then(function (file) {
-        Comp(file);
-    }, function (err) {
-        Err(err);
-    });
-}
-
-function ChangeImage_and_CreateFile2(currentPage, newObject) {
-    var flipView = document.getElementById("FlipView");
-    flipView.winControl.itemDataSource.beginEdits();
-    // changeについて、itemDataSourceからではなくdataArrayからできない？
-    // ui.js line2229
-    //// flipView.winControl.itemDataSource.list.setAt();
-    var hoge = currentPage;
-    if (changeNum > 0) {
-        hoge = 6;
-    }
-
-    return new WinJS.Promise(function (Comp, Err) {
-        // 2買い目のchangeが失敗する件、newObjectが配列最後尾に入って、
-        // 入れ替わり対象の配列indexが空になるからか？
-        //  ↑たぶん違う。一度changeして別画像をchangeしようとしても事案発生する.
-        flipView.winControl.itemDataSource.change(hoge, newObject).then(
-            function () {
-                // change success
-                changeNum++;
-                flipView.winControl.itemDataSource.endEdits();
-                document.getElementById("msg2").textContent = "change success!";
-
-                // 本番モードを使えるようにする
-                document.getElementById("exeMode").disabled = false;
-
-                // 本番モードから作成モードに復帰時用
-                //nowDataArray = flipView.winControl.itemDataSource.list;
-                nowDataArray.splice(currentPage, 1, newObject);
-
-                // 画像データを書き込むテキストファイルを準備
-                var folder = Windows.Storage.ApplicationData.current.localFolder;
-                var mode = Windows.Storage.CreationCollisionOption.replaceExisting;
-                var fileName = "data4_" + currentPage + ".txt";
-
-                return folder.createFileAsync(fileName, mode);
-            }, function (err) {
-                // change miss
-                return new WinJS.Promise.wrapError(err);
-            }
-        ).then(
-            function (file) {
-                // create file success
-                return Comp(file);
-            }, function (err) {
-                // create file miss
-                return Err(err);
-            }
-        );
-    });
-}
-
-// うまくreturnできていないっぽい。return先にfileが返るはずなのに返っていない。
-function ChangeImage_and_CreateFile(currentPage, newObject) {
-    var flipView = document.getElementById("FlipView");
-
-    flipView.winControl.itemDataSource.beginEdits();
-    flipView.winControl.itemDataSource.change(currentPage, newObject).then(
-        function () {
-            // change success
-            flipView.winControl.itemDataSource.endEdits();
-            document.getElementById("msg2").textContent = "change success!";
-
-            // 本番モードを使えるようにする
-            document.getElementById("exeMode").disabled = false;
-
-            // 本番モードから作成モードに復帰時用
-            //nowDataArray = flipView.winControl.itemDataSource.list;
-            nowDataArray.splice(currentPage, 1, newObject);
-
-            // 画像データを書き込むテキストファイルを準備
-            var folder = Windows.Storage.ApplicationData.current.localFolder;
-            var mode = Windows.Storage.CreationCollisionOption.replaceExisting;
-            var fileName = "data4_" + currentPage + ".txt";
-
-            return folder.createFileAsync(fileName, mode);
-        }, function (err) {
-            // change miss
-            return new WinJS.Promise.wrapError(err);
-        }
-    );
-}
-
-function Register2(e) {
-    // ファイルピッカーを開く
-    var view = Windows.UI.ViewManagement.ApplicationView.value;
-    if (view === Windows.UI.ViewManagement.ApplicationViewState.snapped &&
-        !Windows.UI.ViewManagement.ApplicationView.tryUnsnap()) {
-        // TODO : tryUnsnap ha hisuishou
-        return;
-    }
-    // FileOpenPickerオブジェクトを生成
-    var picker = new Windows.Storage.Pickers.FileOpenPicker();
-    // 表示モード
-    picker.viewMode = Windows.Storage.Pickers.PickerViewMode.thumbnail;
-    // 開くフォルダーの指定
-    picker.suggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.picturesLibrary;
-    // 表示ファイルをフィルター
-    picker.fileTypeFilter.replaceAll([".png", ".jpg", ".jpeg"]);
-    // 「開く」ボタンの表記を変更
-    picker.commitButtonText = "決定";
-
-    //var folder;
-    //var mode;
-    var flipView = document.getElementById("FlipView");
-    var write_data = "";
-    var fileName = "";
-
-    var tt = picker.pickSingleFileAsync().then(
-        function (file) {
-            if (file) {
-
-                currentPage = flipView.winControl.currentPage;
-
-                // 追加のオブジェクトを生成
-                newObject = { type: 'item', title: '-1', picture: 'no_picture' };
-                // オブジェクトに追加写真のURIを設定
-                newObject["picture"] = URL.createObjectURL(file, { oneTimeOnly: true });
-                // TODO : 削除時ファイル名出したいので.
-                //newObject["title"] = file.name;
-                // for develop
-                newObject["title"] = currentPage;
-
-
-                document.getElementById("msg").textContent = newObject["picture"];
-                //DataExample.itemList.push("type: 'item', title: 'nothing', picture:" + file.path);
-                filePath = file.path;
-
-                // http://hakuhin.jp/js/data_uri_scheme.html#DATA_URI_SCHEME_02
-                // 1. 下文を外に
-                file_reader = new FileReader();
-                file_reader.readAsDataURL(file);
-                // TODO : write_dataが確実に格納されてからfileに書き込む方法はあるか？
-                // WinJS.Promise(// write).then
-                // 2. onload{}を外に
-                file_reader.onload = function (e) {
-                    document.getElementById("msg").textContent = file_reader.result;
-                    write_data = file_reader.result;
-                    // 3. return ~.change()以下をここに。
-                }
-
-                // 表示中画像を特定し、その画像の後ろに新画像追加し、表示中画像削除
-                flipView = document.getElementById("FlipView");
-
-                flipView.winControl.itemDataSource.beginEdits();
-                return flipView.winControl.itemDataSource.change(currentPage, newObject);
-            } else {
-                // cancel
-                //return new Error("cancel");
-                //tt.cancel();
-                return new WinJS.Promise.wrapError();
-            }
-        }, function (err) {
-            return new WinJS.Promise.wrapError();
-        }).then(
-            function () {
-                //change success
-                flipView.winControl.itemDataSource.endEdits();
-                document.getElementById("msg2").textContent = "change success!";
-
-                // 本番モードを使えるようにする
-                document.getElementById("exeMode").disabled = false;
-
-                // 本番モードから作成モードに復帰時用
-                //nowDataArray = flipView.winControl.itemDataSource.list;
-                nowDataArray.splice(currentPage, 1, newObject);
-
-                // write
-                var folder = Windows.Storage.ApplicationData.current.localFolder;
-                // 上書きモード
-                var mode = Windows.Storage.CreationCollisionOption.replaceExisting;
-                fileName = "data4_" + currentPage + ".txt";
-                return folder.createFileAsync(fileName, mode);
-
-            }, function (err) {
-                // change miss
-                return new WinJS.Promise.wrapError(err);
-            }
-        ).then(
-            function (file) {
-                return Windows.Storage.FileIO.writeTextAsync(file, write_data);
-            }, function (err) {
-                // change miss
-                return new WinJS.Promise.wrapError(err);
-            }
-        ).then(
-            function () {
-                document.getElementById("msg").textContent = "file write success!";
-            },
-            function (e) {
-                document.getElementById("msg").textContent = e;
-            }
-        );
-
 }
 
 function loopAsync(initVal, fun) {
